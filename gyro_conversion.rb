@@ -5,11 +5,11 @@ def gyro_conversion(in_file)
   j = 0 # To print the reading numbers
   puts 'Gyroscope readings in Degrees per Seconds'
   in_file.readlines.each do |line|
-    if line =~ /gyro:/
-      j += 1
-      puts "---#{j}---"
-      array = line.split(',')
-      convert_to_dps(array)
+    next unless line =~ /gyro:/
+    j += 1
+    puts "---#{j}---"
+    array = line.split(',')
+    convert_to_dps(array)
     end
   end
 end
