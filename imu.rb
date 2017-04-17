@@ -111,14 +111,14 @@ puts 'Enter 1,2 or 3:'
 choice = gets.chomp
 case choice
 when '1'
-  g = Gyroscope.new(file)
-  g.capture_data('gyro:')
+  obj = Gyroscope.new(file)
+  obj.capture_data('gyro:')
 when '2'
-  a = Accelerometer.new(file)
-  a.capture_data('accelo:')
+  obj = Accelerometer.new(file)
+  obj.capture_data('accelo:')
 when '3'
-  c = Compass.new(file)
-  c.capture_data('compass:')
+  obj = Compass.new(file)
+  obj.capture_data('compass:')
 end
 
 file.close
