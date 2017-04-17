@@ -46,7 +46,6 @@ class Gyroscope < IMU
   end
 
   def conversion
-    capture_data('gyro:')
     gyro_x = @raw_x * 0.07
     gyro_y = @raw_y * 0.07
     gyro_z = @raw_z * 0.07
@@ -63,7 +62,6 @@ class Accelerometer < IMU
   end
 
   def conversion
-    capture_data('accelo:')
     acc_x_angle = (Math.atan2(@raw_y, @raw_z) + Math::PI) * RAD_TO_DEG
     acc_y_angle = (Math.atan2(@raw_z, @raw_x) + Math::PI) * RAD_TO_DEG
 
@@ -87,7 +85,6 @@ class Compass < IMU
   end
 
   def conversion
-    capture_data('compass:')
     heading = (Math.atan2(@raw_y, @raw_x) * 180) / Math::PI
     if heading < 0 then heading += 360 end
     compute_direction(heading)
@@ -115,13 +112,13 @@ choice = gets.chomp
 case choice
 when '1'
   g = Gyroscope.new(file)
-  g.conversion
+  g.capture_data('gyro:')
 when '2'
   a = Accelerometer.new(file)
-  a.conversion
+  a.capture_data('accelo:')
 when '3'
   c = Compass.new(file)
-  c.conversion
+  c.capture_data('compass:')
 end
 
 file.close
