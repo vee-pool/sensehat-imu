@@ -105,7 +105,7 @@ class Compass < IMU
 end
 
 # Main
-file = File.new('data_imu.txt', 'r')
+File.open('data_imu.txt', 'r') do |file|
 puts 'Which data you want to see?\n1. Gyroscope\n2. Accelerometer\n3. Compass'
 puts 'Enter 1,2 or 3:'
 choice = gets.chomp
@@ -121,4 +121,4 @@ when '3'
   obj.capture_data('compass:')
 end
 
-file.close
+end
